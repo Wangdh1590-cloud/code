@@ -99,7 +99,7 @@ async function handleDelete(id) {
 async function fetchCategories() {
   loading.value = true
   try {
-    const res = await categoryAPI.getList()
+    const res = await categoryAPI.getAdminList()
     categories.value = res.data.data || []
   } finally {
     loading.value = false

@@ -56,6 +56,36 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Page<Product> pageAll(Integer page, Integer size, String search, String categorySlug) {
+        LambdaQueryWrapper<Product> wrapper = new LambdaQueryWrapper<>();
+        // 管理员可查看所有商品（含下架的），不限制 isActive
+
+        if (StringUtils.hasText(categorySlug)) {
+            LambdaQueryWrapper<Category> catWrapper = new LambdaQueryWrapper<>();
+            catWrapper.eq(Category::getSlug, categorySlug);
+            Category category = categoryMapper.selectOne(catWrapper);
+            if (category != null) {
+                wrapper.eq(Product::getCategoryId, category.getId());
+            }
+        }
+
+        if (StringUtils.hasText(search)) {
+            wrapper.and(w -> w.like(Product::getName, search).or().like(Product::getDescription, search));
+        }
+
+        wrapper.orderByDesc(Product::getCreatedAt);
+
+        Page<Product> resultPage = productMapper.selectPage(new Page<>(page, size), wrapper);
+
+        for (Product product : resultPage.getRecords()) {
+            Category category = categoryMapper.selectById(product.getCategoryId());
+            product.setCategory(category);
+        }
+
+        return resultPage;
+    }
+
+    @Override
     public Product getById(Integer id) {
         Product product = productMapper.selectById(id);
         if (product == null) {

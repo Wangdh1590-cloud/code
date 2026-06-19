@@ -5,6 +5,7 @@ import com.minimall.entity.Product;
 
 public interface ProductService {
     Page<Product> page(Integer page, Integer size, String search, String categorySlug);
+    Page<Product> pageAll(Integer page, Integer size, String search, String categorySlug);
     Product getById(Integer id);
     Product getBySlug(String slug);
     Product create(Product product);

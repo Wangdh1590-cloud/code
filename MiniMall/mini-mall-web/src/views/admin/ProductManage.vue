@@ -56,7 +56,7 @@ function formatPrice(p) { return (p / 100).toFixed(2) }
 async function fetchProducts() {
   loading.value = true
   try {
-    const res = await productAPI.getList({ page: page.value, size: pageSize.value })
+    const res = await productAPI.getAdminList({ page: page.value, size: pageSize.value })
     const data = res.data.data
     products.value = data.records || []
     total.value = data.total || 0

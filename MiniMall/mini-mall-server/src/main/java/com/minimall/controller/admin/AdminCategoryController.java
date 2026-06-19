@@ -5,6 +5,8 @@ import com.minimall.entity.Category;
 import com.minimall.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/admin/categories")
 public class AdminCategoryController {
@@ -13,6 +15,16 @@ public class AdminCategoryController {
 
     public AdminCategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
+    }
+
+    @GetMapping
+    public Result<List<Category>> list() {
+        return Result.ok(categoryService.listAll());
+    }
+
+    @GetMapping("/{id}")
+    public Result<Category> getById(@PathVariable Integer id) {
+        return Result.ok(categoryService.getById(id));
     }
 
     @PostMapping

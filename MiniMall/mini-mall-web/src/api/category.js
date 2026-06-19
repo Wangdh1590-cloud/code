@@ -4,6 +4,10 @@ export const categoryAPI = {
   getList() {
     return request.get('/categories')
   },
+  // 管理员
+  getAdminList() {
+    return request.get('/admin/categories')
+  },
   create(data) {
     return request.post('/admin/categories', data)
   },

@@ -1,0 +1,1 @@
+import{v as e}from"./index-DjZfuBJB.js";const o={getMyOrders(r){return e.get("/orders",{params:r})},create(){return e.post("/orders")},getById(r){return e.get(`/orders/${r}`)},pay(r){return e.post(`/orders/${r}/pay`)},getAll(r){return e.get("/admin/orders",{params:r})},updateStatus(r,t){return e.put(`/admin/orders/${r}/status`,{status:t})}};export{o};

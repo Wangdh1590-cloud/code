@@ -8,6 +8,9 @@ export const productAPI = {
     return request.get(`/products/${id}`)
   },
   // 管理员
+  getAdminList(params) {
+    return request.get('/admin/products', { params })
+  },
   create(data) {
     return request.post('/admin/products', data)
   },

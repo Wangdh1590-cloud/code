@@ -1,0 +1,1 @@
+import{v as t}from"./index-DjZfuBJB.js";const i={getList(){return t.get("/categories")},getAdminList(){return t.get("/admin/categories")},create(e){return t.post("/admin/categories",e)},update(e,r){return t.put(`/admin/categories/${e}`,r)},delete(e){return t.delete(`/admin/categories/${e}`)}};export{i as c};
