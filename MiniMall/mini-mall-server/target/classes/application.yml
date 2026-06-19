@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:data/minimall.db
+    username:
+    password:
+    hikari:
+      connection-init-sql: PRAGMA encoding='UTF-8'
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# JWT config
+jwt:
+  secret: MiniMallJwtSecretKey2024ChangeMeInProduction!!
+  expiration: 604800000  # 7 days in ms
+
+logging:
+  level:
+    com.minimall: debug

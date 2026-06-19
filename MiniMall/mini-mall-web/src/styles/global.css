@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #333;
+  background: #f5f7fa;
+}
+
+.main-content {
+  min-height: calc(100vh - 140px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 价格样式 */
+.price {
+  color: #e4393c;
+  font-weight: bold;
+}
+
+.price::before {
+  content: '¥';
+  font-size: 0.8em;
+}

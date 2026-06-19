@@ -1,0 +1,1 @@
+import{v as e}from"./index-IVPM1jfB.js";const d={getList(t){return e.get("/products",{params:t})},getById(t){return e.get(`/products/${t}`)},create(t){return e.post("/admin/products",t)},update(t,r){return e.put(`/admin/products/${t}`,r)},delete(t){return e.delete(`/admin/products/${t}`)}};export{d as p};
